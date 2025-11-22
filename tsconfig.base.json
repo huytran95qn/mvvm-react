@@ -18,7 +18,8 @@
 		"paths": {
 			"@Core": ["packages/Core/src"],
 			"@Repositories/*": ["packages/Infrastructure/src/Repositories/*"],
-			"@Entities/*": ["packages/Domain/Entities/*"],
+			"@Domain/Entities/*": ["packages/Domain/Entities/*"],
+			"@Domain/Repositories/*": ["packages/Domain/Repositories/*"],
 			"@Application/*": ["packages/Application/src/*"]
 		}
   }

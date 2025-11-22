@@ -19,7 +19,8 @@ export default defineConfig({
 		alias: {
 			"@Core": path.resolve(__dirname, "../Core/src"),
 			"@Repositories": path.resolve(__dirname, "../Infrastructure/src/Repositories"),
-			"@Entities": path.resolve(__dirname, "../Domain/Entities"),
+			"@Domain/Entities": path.resolve(__dirname, "../Domain/Entities"),
+			"@Domain/Repositories": path.resolve(__dirname, "../Domain/Repositories"),
 			"@Application": path.resolve(__dirname, "../Application/src")
 		}
 	},

@@ -1,4 +1,4 @@
-import { ExpenseTracker } from "packages/Domain/Entities/expenseTracker.entity";
+import { ExpenseTracker } from "@Domain/Entities/expenseTracker.entity";
 import { Observable } from "rxjs";
 
 export interface IExpenseTrackerRepository {

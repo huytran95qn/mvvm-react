@@ -1,8 +1,8 @@
 import { useInjector } from '@Core';
-import { ExpenseTracker } from 'packages/Domain/Entities/expenseTracker.entity';
 import { ExpensesTrackerUseCase } from '@Application/ExpenseTracker';
 import './App.css'
 import { useEffect, useState } from 'react';
+import { ExpenseTracker } from '@Domain/Entities/expenseTracker.entity';
 
 function App() {
     const expeneTrackerRepository = useInjector(ExpensesTrackerUseCase);

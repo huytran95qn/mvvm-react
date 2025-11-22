@@ -13,11 +13,11 @@
 		{
 			"path": "../Core"
 		},
-		{
-			"path": "../Infrastructure"
-		},
         {
 			"path": "../Domain"
-		}
+		},
+        {
+            "path": "../Infrastructure"
+        }
 	]
 }

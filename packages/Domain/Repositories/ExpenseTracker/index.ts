@@ -1,0 +1,1 @@
+export { type IExpenseTrackerRepository } from "./ExpenseTracker.repository.interface";

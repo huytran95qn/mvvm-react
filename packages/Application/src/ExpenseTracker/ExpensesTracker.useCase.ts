@@ -1,8 +1,11 @@
 import { Inject } from "@Core";
-import { EXPENSE_TRACKER_REPOSITORY_TOKEN, type IExpenseTrackerRepository } from "@Repositories/ExpenseTracker";
+import {
+    type IExpenseTrackerRepository
+} from "@Domain/Repositories/ExpenseTracker";
 import { map, Observable } from "rxjs";
 import { IExpensesTrackerUseCase } from "./ExpensesTracker.use-case.interface";
-import { ExpenseTracker } from "@Entities/expenseTracker.entity";
+import { ExpenseTracker } from "@Domain/Entities/expenseTracker.entity";
+import { EXPENSE_TRACKER_REPOSITORY_TOKEN } from "@Repositories/ExpenseTracker";
 
 export class ExpensesTrackerUseCase implements IExpensesTrackerUseCase {
     constructor(
