@@ -1,5 +1,4 @@
 import { Newable } from "../Shared/newAble";
-import { defaultDIStorage } from "../DI/DIContainer";
 import { INJECT_KEY } from "../Shared/injectKey";
 import { InjectionToken } from "./InjectToken";
 
@@ -14,7 +13,7 @@ export function Inject<T>(
 ): (target: object, propertyKey?: string | symbol, parameterIndex?: number) => void {
     return (
         target: object,
-        propertyKey?: string | symbol,
+        _propertyKey?: string | symbol,
         parameterIndex?: number
     ) => {
         if (parameterIndex == null) {
@@ -24,14 +23,5 @@ export function Inject<T>(
         const params = Reflect.getMetadata(INJECT_KEY, target) ?? [];
         params[parameterIndex] = token;
         Reflect.defineMetadata(INJECT_KEY, params, target);
-        
-
-        // Object.defineProperty(target, propertyKey!, {
-        //     get() {
-        //         return defaultDIStorage.get(token);
-        //     },
-        //     enumerable: true,
-        //     configurable: true,
-        // });
     }
 }

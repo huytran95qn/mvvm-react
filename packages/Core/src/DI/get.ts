@@ -1,14 +1,14 @@
 import { Newable } from "../Shared/newAble";
-import { defaultDIStorage } from "../DI/DIContainer";
+import { defaultDIStorage } from "./DIContainer";
 import { InjectionToken } from "../Decorators/InjectToken";
 
-export function useInjector<T>(
+export function get<T>(
     identifier: InjectionToken<T>
 ): T;
-export function useInjector<T>(
+export function get<T>(
     identifier: Newable<T>
 ): T;
-export function useInjector<T>(
+export function get<T>(
     identifier: any
 ): T {
     const instance = defaultDIStorage.get(identifier);

@@ -4,7 +4,7 @@ import { INJECT_KEY } from "../Shared/injectKey";
 import { Newable } from "../Shared/newAble";
 import { InjectionToken } from "../Decorators/InjectToken";
 
-export class DIContainer {
+class DIContainer {
     private readonly container = new Container();
 
     public get<T>(token: Newable<T>): T;
@@ -25,11 +25,13 @@ export class DIContainer {
     public bind<T>(token: InjectionToken<T>, implementation: Newable<T>): void;
     public bind<T>(token: Newable<T>): void;
     public bind<T>(token: any, implementation?: Newable<T>): void {
-        if (this.container.isBound(token)) {
-            return;
-        }
-
         if (token instanceof InjectionToken) {
+            const injectToken = token as InjectionToken<T>;
+
+            if (this.container.isBound(injectToken.description)) {
+                return;
+            }
+
             if (token.implementation == null) {
                 throw new Error(`No implementation provided for token: ${token.description}`);
             }
@@ -38,9 +40,28 @@ export class DIContainer {
                 this.resolveDependencies(token.implementation)
             );
         } else if (typeof token === "function") {
-            this.container.bind<T>(token).toConstantValue(
-                this.resolveDependencies(implementation == null ? token : implementation)
+            const newAbleToken = token as Newable<T>;
+
+            this.container.bind<T>(newAbleToken).toConstantValue(
+                this.resolveDependencies(implementation == null ? newAbleToken : implementation)
             );
+        }
+    }
+
+    public unbind<T>(identifier: InjectionToken<T>): void;
+    public unbind<T>(identifier: Newable<T>): void;
+    public unbind<T>(identifier: any): void {
+        if (identifier instanceof InjectionToken) {
+            const injectToken = identifier as InjectionToken<T>;
+
+            this.container.unbind(injectToken.description);
+            return;
+        }
+        
+        const newAbleToken = identifier as Newable<T>;
+
+        if (this.container.isBound(newAbleToken)) {
+            this.container.unbind(newAbleToken);
         }
     }
 
