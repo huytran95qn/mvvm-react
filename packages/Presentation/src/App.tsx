@@ -5,21 +5,21 @@ import { useEffect, useState } from 'react';
 import { ExpenseTracker } from '@Domain/Entities/expenseTracker.entity';
 
 function App() {
-    const expeneTrackerRepository = useInjector(ExpensesTrackerUseCase);
+    const expensesTrackerRepo = useInjector(ExpensesTrackerUseCase);
     const [state, setState] = useState<{
         id: string;
         value: ExpenseTracker[];
     }[]>();
 
     useEffect(() => {
-        const subscription = expeneTrackerRepository
+        const subscription = expensesTrackerRepo
             .getExpensesTrackersByGroup()
             .subscribe({
                 next: groups => setState(groups)
             });
 
         return () => subscription.unsubscribe();
-    }, [expeneTrackerRepository]);
+    }, [expensesTrackerRepo]);
 
     return (
         <div className="App">
