@@ -1,0 +1,22 @@
+{
+    "name": "@mvvm-react/core",
+    "version": "0.1.0",
+    "description": "Core library project for mvvm-react",
+    "license": "MIT",
+    "main": "dist/index.cjs",
+    "module": "dist/index.mjs",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {},
+    "publishConfig": {
+        "access": "public"
+    },
+    "peerDependencies": {
+        "reflect-metadata": "^0.2.0"
+    },
+    "dependencies": {
+        "inversify": "^7.10.4"
+    }
+}

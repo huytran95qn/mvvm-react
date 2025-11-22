@@ -1,0 +1,24 @@
+{
+    "name": "@mvvm-react/domain",
+    "version": "0.1.0",
+    "description": "Domain Business Models for mvvm-react",
+    "license": "MIT",
+    "main": "dist/index.cjs",
+    "module": "dist/index.mjs",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build:clean": "rm -rf dist && rm -f tsconfig.build.tsbuildinfo",
+        "build:project": "pnpm run build:clean && tsc -p tsconfig.build.json",
+        "build": "pnpm run build:project",
+        "dev": "tsc -p tsconfig.build.json --watch",
+        "release": "pnpm run build"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "peerDependencies": {},
+    "dependencies": {}
+}

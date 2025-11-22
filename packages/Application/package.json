@@ -1,0 +1,29 @@
+{
+    "name": "@mvvm-react/application",
+    "version": "0.1.0",
+    "description": "Application Business Models for mvvm-react",
+    "license": "MIT",
+    "main": "dist/index.cjs",
+    "module": "dist/index.mjs",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build:clean": "rm -rf dist && rm -f tsconfig.build.tsbuildinfo",
+        "build:project": "pnpm run build:clean && tsc -p tsconfig.build.json",
+        "build": "pnpm run build:project",
+        "dev": "tsc -p tsconfig.build.json --watch",
+        "release": "pnpm run build"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "peerDependencies": {
+        "reflect-metadata": "^0.2.0"
+    },
+    "dependencies": {
+        "inversify": "^7.10.4",
+        "rxjs": "^7.8.1"
+    }
+}

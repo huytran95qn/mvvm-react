@@ -1,0 +1,1 @@
+export type { ExpenseTracker } from "./expenseTracker.entity";

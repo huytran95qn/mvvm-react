@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+		"target": "ES2019",
+		"module": "ESNext",
+		"lib": ["ES2019", "DOM"],
+		"moduleResolution": "Bundler",
+		"strict": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"allowSyntheticDefaultImports": true,
+		"noEmit": false,
+		"isolatedModules": true,
+		"baseUrl": "./",
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"paths": {
+			"@Core": ["packages/Core/src"],
+			"@Repositories/*": ["packages/Infrastructure/src/Repositories/*"],
+			"@Entities/*": ["packages/Domain/Entities/*"],
+			"@Application/*": ["packages/Application/src/*"]
+		}
+  }
+}
