@@ -1,26 +1,18 @@
 import React from "react";
 import { ExpenseTrackerViewModel } from "./ExpenseTracker.viewModel";
-import { useViewModel } from "../../Hooks/useViewModel";
-import { ViewModelProvider } from "../../Components/ViewModelProvider";
+import { get } from "@Core";
+import { useObservable } from "../../Hooks/useObservable";
 
-function GenerateExpenseTrackerView(): React.JSX.Element {
-    const groups = useViewModel(
-        ExpenseTrackerViewModel,
-        vm => vm.getExpensesTrackersByGroup()
+export function ExpenseTrackerView(): React.JSX.Element {
+    const expenseTrackerViewModel = get(ExpenseTrackerViewModel);
+    const value = useObservable(
+        () => expenseTrackerViewModel.getExpensesTrackersByGroup()
     );
 
     return (
         <div>
             <p>Expense Tracker</p>
-            <pre>{JSON.stringify(groups)}</pre>
+            <pre>{JSON.stringify(value)}</pre>
         </div>
     );
-}
-
-export function ExpenseTrackerView(): React.JSX.Element {
-    return (
-        <ViewModelProvider viewModel={ExpenseTrackerViewModel}>
-            <GenerateExpenseTrackerView />
-        </ViewModelProvider>
-    )
 }

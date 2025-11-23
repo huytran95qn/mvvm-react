@@ -1,5 +1,7 @@
 import './App.css';
+import { ViewModelProvider } from './Components/ViewModelProvider';
 import { ExpenseTrackerView } from './Pages/ExpenseTracker/ExpenseTracker.view';
+import { ExpenseTrackerViewModel } from './Pages/ExpenseTracker/ExpenseTracker.viewModel';
 
 function App() {
     return (
@@ -8,7 +10,10 @@ function App() {
             <h1>MVVM React - Presentation Layer</h1>
             <p>Welcome to your MVVM React application!</p>
 
-            <ExpenseTrackerView />
+            <ViewModelProvider viewModel={ExpenseTrackerViewModel}>
+                <ExpenseTrackerView />
+            </ViewModelProvider>
+            
         </header>
         </div>
     )

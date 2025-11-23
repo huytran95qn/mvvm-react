@@ -21,7 +21,6 @@ class DIContainer {
         return this.container.get<T>(token);
     }
 
-
     public bind<T>(token: InjectionToken<T>, implementation: Newable<T>): void;
     public bind<T>(token: Newable<T>): void;
     public bind<T>(token: any, implementation?: Newable<T>): void {

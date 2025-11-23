@@ -30,7 +30,6 @@ export function ViewModelProvider<T>({
     );
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 export function useProvidedViewModel<T>(): T {
     const viewModel = useContext(ViewModelContext);
 
