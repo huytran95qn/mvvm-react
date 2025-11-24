@@ -1,5 +1,5 @@
+import { ViewModelProvider } from '@Components';
 import './App.css';
-import { ViewModelProvider } from './Components/ViewModelProvider';
 import { ExpenseTrackerView } from './Pages/ExpenseTracker/ExpenseTracker.view';
 import { ExpenseTrackerViewModel } from './Pages/ExpenseTracker/ExpenseTracker.viewModel';
 
@@ -13,7 +13,6 @@ function App() {
             <ViewModelProvider viewModel={ExpenseTrackerViewModel}>
                 <ExpenseTrackerView />
             </ViewModelProvider>
-            
         </header>
         </div>
     )

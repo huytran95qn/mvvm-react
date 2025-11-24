@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { Container } from "inversify"
-import { INJECT_KEY } from "../Shared/injectKey";
+import { DESIGN_PARAM_TYPES, INJECT_KEY } from "../Shared/injectKey";
 import { Newable } from "../Shared/newAble";
 import { InjectionToken } from "../Decorators/InjectToken";
 
@@ -14,7 +14,7 @@ class DIContainer {
             this.bind<T>(token);
         }
 
-        if (token instanceof InjectionToken) {
+        if (this.isInjectionToken(token)) {
             return this.container.get<T>(token.description);
         }
 
@@ -24,7 +24,7 @@ class DIContainer {
     public bind<T>(token: InjectionToken<T>, implementation: Newable<T>): void;
     public bind<T>(token: Newable<T>): void;
     public bind<T>(token: any, implementation?: Newable<T>): void {
-        if (token instanceof InjectionToken) {
+        if (this.isInjectionToken(token)) {
             const injectToken = token as InjectionToken<T>;
 
             if (this.container.isBound(injectToken.description)) {
@@ -36,7 +36,7 @@ class DIContainer {
             }
 
             this.container.bind<T>(token.description).toConstantValue(
-                this.resolveDependencies(token.implementation)
+                this.resolveDependencies(token.implementation as Newable<T>)
             );
         } else if (typeof token === "function") {
             const newAbleToken = token as Newable<T>;
@@ -50,24 +50,28 @@ class DIContainer {
     public unbind<T>(identifier: InjectionToken<T>): void;
     public unbind<T>(identifier: Newable<T>): void;
     public unbind<T>(identifier: any): void {
-        if (identifier instanceof InjectionToken) {
-            const injectToken = identifier as InjectionToken<T>;
-
-            this.container.unbind(injectToken.description);
+        if (this.isInjectionToken(identifier)) {
+            this.container.unbind(identifier.description);
             return;
         }
         
-        const newAbleToken = identifier as Newable<T>;
-
-        if (this.container.isBound(newAbleToken)) {
-            this.container.unbind(newAbleToken);
+        if (this.container.isBound(identifier)) {
+            this.container.unbind(identifier);
         }
+    }
+
+    public unbindAll(): void {
+        this.container.unbindAll();
     }
 
     private resolveDependencies<T>(identifier: Newable<T>): T {
         const params: Newable<T>[] = Reflect.getMetadata(INJECT_KEY, identifier) || [];
         
         return new identifier(...params.map(param => this.get(param)));
+    }
+
+    private isInjectionToken<T>(token: any): token is InjectionToken<T> {
+        return token instanceof InjectionToken;
     }
 }
 

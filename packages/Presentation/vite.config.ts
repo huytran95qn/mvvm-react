@@ -17,6 +17,7 @@ export default defineConfig({
 	],
 	resolve: {
 		alias: {
+			"@Components": path.resolve(__dirname, "../Components/src/index.ts"),
 			"@Core": path.resolve(__dirname, "../Core/src"),
 			"@Repositories": path.resolve(__dirname, "../Infrastructure/src/Repositories"),
 			"@Domain/Entities": path.resolve(__dirname, "../Domain/Entities"),

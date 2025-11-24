@@ -1,10 +1,9 @@
 import React from "react";
 import { ExpenseTrackerViewModel } from "./ExpenseTracker.viewModel";
-import { get } from "@Core";
-import { useObservable } from "../../Hooks/useObservable";
+import { useViewModel, useObservable } from "@Components";
 
 export function ExpenseTrackerView(): React.JSX.Element {
-    const expenseTrackerViewModel = get(ExpenseTrackerViewModel);
+    const expenseTrackerViewModel = useViewModel(ExpenseTrackerViewModel);
     const value = useObservable(
         () => expenseTrackerViewModel.getExpensesTrackersByGroup()
     );

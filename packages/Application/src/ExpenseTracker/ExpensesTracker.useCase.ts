@@ -1,4 +1,4 @@
-import { Inject } from "@Core";
+import { Inject, Injectable } from "@Core";
 import {
     type IExpenseTrackerRepository
 } from "@Domain/Repositories/ExpenseTracker";
@@ -7,6 +7,7 @@ import { IExpensesTrackerUseCase } from "./ExpensesTracker.use-case.interface";
 import { ExpenseTracker } from "@Domain/Entities/expenseTracker.entity";
 import { EXPENSE_TRACKER_REPOSITORY_TOKEN } from "@Repositories/ExpenseTracker";
 
+@Injectable()
 export class ExpensesTrackerUseCase implements IExpensesTrackerUseCase {
     constructor(
         @Inject(EXPENSE_TRACKER_REPOSITORY_TOKEN)

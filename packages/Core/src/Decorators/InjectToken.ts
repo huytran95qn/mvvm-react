@@ -6,11 +6,11 @@ export class InjectionToken<T = any> {
         private _implementation?: Newable<T>
     ) {}
 
-    get implementation() {
+    public get implementation(): Newable<T> | undefined {
         return this._implementation;
     }
 
-    withImplementation(impl: new (...args: any[]) => T): this {
+    public withImplementation(impl: new (...args: any[]) => T): this {
         this._implementation = impl;
         return this;
     }

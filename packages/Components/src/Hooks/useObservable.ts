@@ -1,5 +1,5 @@
 import { BehaviorSubject, Observable, tap } from "rxjs"
-import useConstant from "./useConstant"
+import { useConstant } from "./useConstant"
 import { useEffect, useMemo, useSyncExternalStore } from "react"
 
 export type InputFactory<State> = (state$: Observable<State>) => Observable<State>

@@ -18,7 +18,7 @@
 		"noFallthroughCasesInSwitch": true,
 		"types": ["jest", "@testing-library/jest-dom"]
 	},
-	"include": ["src"],
+	"include": ["src", "../Components/src/ViewModelProvider"],
 	"references": [
 		{
 			"path": "../Core"

@@ -1,6 +1,6 @@
 export { Inject } from "./Decorators/inject.decorator";
-export { get } from "./DI/get";
-export { bind } from "./DI/bind";
+export { getInstance } from "./DI/get-instance";
+export { bindInstance } from "./DI/bind-instance";
 export { unBind } from "./DI/unBind";
 export { Injectable } from "./Decorators/injectable.decorator";
 export { InjectionToken } from "./Decorators/InjectToken";
